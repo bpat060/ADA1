@@ -22,7 +22,7 @@ public class UniqueIdentifier {
 
     static int ID() {
         id = System.identityHashCode(E);
-        return id
+        return id;
     }
 
 }
