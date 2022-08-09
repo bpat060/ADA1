@@ -10,14 +10,20 @@ package A1;
  */
 public class Task<E, F> implements Runnable {
 
-    E e;
-    Task task = new Task(e);
+    public E thread;
+    public Object item;
+    public Task task = new Task(item);
     private int x;
     private boolean chopstick; // access to chopstick is synchronized
     int id;
 
-    public Task(E param) {
+    public Task() {
+        x = 0;
+        chopstick = true;
+        this.id = id;
+    }
 
+    public Task(E param) {
         x = 0;
         chopstick = true;
         this.id = id;
@@ -63,8 +69,6 @@ public class Task<E, F> implements Runnable {
     }
 
     public static void main(String[] args) {  // creates task
-        Task task1 = new Task(e);
-
         //creates 10 threads accoring to loop
         for (int i = 0; i < 10; i++) {
             Thread thread = new Thread(task);
