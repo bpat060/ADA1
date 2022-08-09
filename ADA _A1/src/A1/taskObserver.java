@@ -17,14 +17,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
 
-public class taskObserver
+public class TaskObserver
 {
    private int min, max; // minimum (incl) and maximum (excl) range
    private boolean stopRequested;
    private Random generator;
    public static final int PORT = 7777; // some unused port number
    
-   public taskObserver(int min, int max)
+   public TaskObserver(int min, int max)
    {  this.min = min;
       this.max = max;
       stopRequested = false;
@@ -75,7 +75,7 @@ public class taskObserver
    
    // driver main method to test the class
    public static void main(String[] args)
-   {  taskObserver server = new taskObserver(1, 100);
+   {  TaskObserver server = new TaskObserver(1, 100);
       server.startServer();
    }
    

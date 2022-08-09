@@ -9,6 +9,6 @@ package A1;
  *
  * @author Owner
  */
-public class test {
+public class Task {
 
 }

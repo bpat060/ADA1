@@ -11,12 +11,12 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner; // Java 1.5 equivalent of cs1.Keyboard
 
-public class tasksWthreads
+public class ThreadPool
 {
    public static final String HOST_NAME = "localhost";
    public static final int HOST_PORT = 7777; // host port number
 
-   public tasksWthreads()
+   public ThreadPool()
    {
    }
    
@@ -62,7 +62,7 @@ public class tasksWthreads
    }
    
    public static void main(String[] args)
-   {  tasksWthreads client = new tasksWthreads();
+   {  ThreadPool client = new ThreadPool();
       client.startClient();
    }
 }
