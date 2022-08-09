@@ -11,20 +11,27 @@ package A1.B;
  */
 public class ThreadPool {
 
+    Task E;
+    int initialSize;
+
     public ThreadPool(int initialSize) {
+        this.initialSize = initialSize;
+        this.E = E;
 
     }
 
     public int getSize() {
-
-        return 0;
-
+        return 0; //dunno if get size is relative to initial size++?
     }
 
     public int getAvailable() {
-
-        return 0;
-
+        int num;
+        if (perform(E) == true) {
+            num = 1;
+        } else {
+            num = 0;
+        }
+        return num;
     }
 
     public void resize(int newSize) {
@@ -38,6 +45,5 @@ public class ThreadPool {
     public boolean perform(Runnable task) {
 
         return false;
-
     }
 }

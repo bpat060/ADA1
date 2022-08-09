@@ -11,7 +11,7 @@ package A1.B;
  */
 public class UniqueIdentifier {
 
-    int id;
+    static int id;
     static Task E;
 
     public UniqueIdentifier(Task E) {
@@ -21,7 +21,8 @@ public class UniqueIdentifier {
     }
 
     static int ID() {
-        return System.identityHashCode(E);
+        id = System.identityHashCode(E);
+        return id;
     }
 
 }
