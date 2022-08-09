@@ -11,15 +11,14 @@ package A1.B;
  */
 public class Task<E, F> implements Runnable {
 
-    UniqueIdentifier id;
+    int id;
 
     public Task(E param) {
         this.id = id;
-
     }
 
-    public UniqueIdentifier getID() { //need to change return to int
-        return id;
+    public int getID() { //need to change return to int
+        return UniqueIdentifier.ID();
     }
 
     public void run() {

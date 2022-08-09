@@ -12,8 +12,16 @@ package A1.B;
 public class UniqueIdentifier {
 
     int id;
+    static Task E;
 
-    public UniqueIdentifier() {
+    public UniqueIdentifier(Task E) {
+
         this.id = id;
+        this.E = E;
     }
+
+    static int ID() {
+        return System.identityHashCode(E);
+    }
+
 }
