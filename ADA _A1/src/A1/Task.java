@@ -35,20 +35,15 @@ public class Task implements Runnable
    }
    
    public static void main(String[] args)
-   {  // create two concurrent threads
+   {  // creates one thread
       Task task = new Task();
-      Thread threadA = new Thread(task);
-      //Thread threadB = new Thread(task);
-      threadA.start();
-      //threadB.start();
-      //try
-      //{  // wait for both threads to finish
-         //threadA.join();
-         //threadB.join();
-      //}
-      //catch (InterruptedException e)
-      //{  System.out.println("Interrupted " + e);
-      //}
+      
+      for (int i = 0; i < 10; i++){
+          Thread thread = new Thread(task);
+        thread.start();
+        //System.out.println("The final value of x is " + task.x);
+      }
+      
       System.out.println("The final value of x is " + task.x);
    }
 }
