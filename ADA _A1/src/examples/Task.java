@@ -1,4 +1,4 @@
-package A1;
+package examples;
 
 /**
  * A class that represents a server in a number guessing game where GuessClient
@@ -17,14 +17,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
 
-public class TaskObserver {
+public class Task {
 
     private int min, max; // minimum (incl) and maximum (excl) range
     private boolean stopRequested;
     private Random generator;
     public static final int PORT = 7777; // some unused port number
 
-    public TaskObserver(int min, int max) {
+    public Task(int min, int max) {
         this.min = min;
         this.max = max;
         stopRequested = false;
@@ -72,7 +72,7 @@ public class TaskObserver {
 
     // driver main method to test the class
     public static void main(String[] args) {
-        TaskObserver server = new TaskObserver(1, 100);
+        Task server = new Task(1, 100);
         server.startServer();
     }
 
