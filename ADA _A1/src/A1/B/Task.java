@@ -9,6 +9,33 @@ package A1.B;
  *
  * @author Owner
  */
-public class Task {
+public class Task<E, F> implements Runnable {
+
+    UniqueIdentifier id;
+
+    public Task(E param) {
+        this.id = id;
+
+    }
+
+    public UniqueIdentifier getID() { //need to change return to int
+        return id;
+    }
+
+    public void run() {
+
+    }
+
+    public void addListener(TaskObserver o) {
+
+    }
+
+    public void removeListener(TaskObserver o) {
+
+    }
+
+    protected void notifyAll(F progress) {
+
+    }
 
 }
