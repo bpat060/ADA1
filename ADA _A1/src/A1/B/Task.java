@@ -11,6 +11,8 @@ package A1.B;
  */
 public class Task<E, F> implements Runnable {
 
+    E e;
+    Task task = new Task(e);
     int id;
 
     public Task(E param) {
@@ -18,6 +20,7 @@ public class Task<E, F> implements Runnable {
     }
 
     public int getID() { //need to change return to int
+        UniqueIdentifier UI = new UniqueIdentifier(task);
         return UniqueIdentifier.ID();
     }
 
