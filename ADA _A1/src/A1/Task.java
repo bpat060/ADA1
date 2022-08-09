@@ -3,11 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package A1;
-
-import Chapter_1.Lamports_Bakery_Algorithm;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Sheet
@@ -15,18 +10,15 @@ import java.util.List;
 public class Task implements Runnable
 {
    private int x;
-   private volatile int UniqueIdentifier;
-   private boolean chopstick; // access to chopstick    is synchronized
-   private static volatile List<Lamports_Bakery_Algorithm> threads = new ArrayList();
+   private boolean chopstick; // access to chopstick is synchronized
    
    public Task()
    {   
-       x = 0;
-       int id = UniqueIdentifier; 
+       x = 0; 
        chopstick = true;
    }
    
-   // repeatedly increment the value of x 
+   //acquired lock then then thats finished release lock
    public void run()
    {  
       acquireLock();
@@ -64,11 +56,11 @@ public class Task implements Runnable
       notify(); // notify one waiting thread
    }
 
-   
    public static void main(String[] args)
-   {  // creates one thread
+   {  // creates task
       Task task = new Task();
       
+      //creates 10 threads accoring to loop
       for (int i = 0; i < 10; i++){
           Thread thread = new Thread(task);
           thread.start();
