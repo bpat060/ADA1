@@ -3,20 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package A1;
+
 /**
  *
- * @author Sheet
+ * @author 
  */
 public class Task implements Runnable
 {
    private int x;
    private boolean chopstick; // access to chopstick is synchronized
-   
-   public Task()
-   {   
-       x = 0; 
+   int id;
+
+    public Task() {
+        x = 0; 
        chopstick = true;
-   }
+        this.id = id;
+    }
+
+    public int getID() { //need to change return to int
+        return UniqueIdentifier.ID();
+    }
    
    //acquired lock then then thats finished release lock
    public void run()
@@ -53,7 +59,7 @@ public class Task implements Runnable
 
    public synchronized void releaseLock()
    {  chopstick = true; // lock is now available for other threads
-      notify(); // notify one waiting thread
+      notifyAll(); // notify one waiting thread
    }
 
    public static void main(String[] args)
@@ -66,4 +72,20 @@ public class Task implements Runnable
           thread.start();
       }
    }
+   
+   public void addListener(TaskObserver o) {
+
+    }
+
+    public void removeListener(TaskObserver o) {
+
+    }
+
+    protected void notifyAll(Task progress) {
+
+    }
+
+    public interface TaskObserver<E, F> {
+
+    }
 }
