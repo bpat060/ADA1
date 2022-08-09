@@ -9,20 +9,3 @@ package A1.B;
  *
  * @author Owner
  */
-public class UniqueIdentifier {
-
-    static int id;
-    static Task E;
-
-    public UniqueIdentifier(Task E) {
-
-        this.id = id;
-        this.E = E;
-    }
-
-    static int ID() {
-        id = System.identityHashCode(E);
-        return id;
-    }
-
-}

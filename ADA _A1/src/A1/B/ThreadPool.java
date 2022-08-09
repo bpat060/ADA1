@@ -24,7 +24,8 @@ public class ThreadPool {
         return 0; //dunno if get size is relative to initial size++?
     }
 
-    public int getAvailable() {
+    public int getAvailable() { // get available threads?
+        //Thread.currentThread().isAlive();
         int num;
         if (perform(E) == true) {
             num = 1;
