@@ -21,7 +21,7 @@ public class Task<E, F> implements Runnable {
 
     public int getID() { //need to change return to int
         UniqueIdentifier UI = new UniqueIdentifier(task);
-        return UniqueIdentifier.ID();
+        return UI.ID();
     }
 
     public void run() {
