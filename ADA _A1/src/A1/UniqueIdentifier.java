@@ -14,16 +14,16 @@ import A1.B.*;
 public class UniqueIdentifier {
 
     static int id;
-    static Task E;
+    static Task task;
 
-    public UniqueIdentifier(Task E) {
+    public UniqueIdentifier(Task task) {
 
         this.id = id;
-        this.E = E;
+        this.task = task;
     }
 
     static int ID() {
-        id = System.identityHashCode(E);
+        id = System.identityHashCode(task);
         return id;
     }
 

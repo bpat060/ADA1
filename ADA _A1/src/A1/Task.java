@@ -6,74 +6,73 @@ package A1;
 
 /**
  *
- * @author 
+ * @author
  */
-public class Task implements Runnable
-{
-   private int x;
-   private boolean chopstick; // access to chopstick is synchronized
-   int id;
+public class Task<E, F> implements Runnable {
 
-    public Task() {
-        x = 0; 
-       chopstick = true;
+    E e;
+    Task task = new Task(e);
+    private int x;
+    private boolean chopstick; // access to chopstick is synchronized
+    int id;
+
+    public Task(E param) {
+
+        x = 0;
+        chopstick = true;
         this.id = id;
     }
 
     public int getID() { //need to change return to int
-        return UniqueIdentifier.ID();
+        UniqueIdentifier UI = new UniqueIdentifier(task);
+        return UI.ID();
     }
-   
-   //acquired lock then then thats finished release lock
-   public void run()
-   {  
-      acquireLock();
-      releaseLock();
-   }
-   
-   public synchronized void acquireLock()
-   {  
-       while (!chopstick) // wait for the lock available notification
-      {  try
-         {  wait();
-         }
-         catch (InterruptedException e)
-         {  // ignore
-         }
-      }
-      chopstick = false; // lock is now unavailable for other threads
-      
-      System.out.println("Thread " + Thread.currentThread()
-         + " started with x = " + x);
-      
-      int loopIterations = 10;
-      
-      for (int i = 0; i < loopIterations; i++)
-      {  
-          x++; 
-      }
-      
-      System.out.println("Thread " + Thread.currentThread()
-         + " finishing with x = " + x); 
-   }
 
-   public synchronized void releaseLock()
-   {  chopstick = true; // lock is now available for other threads
-      notifyAll(); // notify one waiting thread
-   }
+    //acquired lock then then thats finished release lock
+    public void run() {
+        acquireLock();
+        releaseLock();
+    }
 
-   public static void main(String[] args)
-   {  // creates task
-      Task task = new Task();
-      
-      //creates 10 threads accoring to loop
-      for (int i = 0; i < 10; i++){
-          Thread thread = new Thread(task);
-          thread.start();
-      }
-   }
-   
-   public void addListener(TaskObserver o) {
+    public synchronized void acquireLock() {
+        while (!chopstick) // wait for the lock available notification
+        {
+            try {
+                wait();
+            } catch (InterruptedException e) {  // ignore
+            }
+        }
+        chopstick = false; // lock is now unavailable for other threads
+
+        System.out.println("Thread " + Thread.currentThread()
+                + " started with x = " + x);
+
+        int loopIterations = 10;
+
+        for (int i = 0; i < loopIterations; i++) {
+            x++;
+        }
+
+        System.out.println("Thread " + Thread.currentThread()
+                + " finishing with x = " + x);
+    }
+
+    public synchronized void releaseLock() {
+        chopstick = true; // lock is now available for other threads
+        notifyAll(); // notify one waiting thread
+    }
+
+    public static void main(String[] args) {  // creates task
+        Task task1 = new Task(e);
+
+        //creates 10 threads accoring to loop
+        for (int i = 0; i < 10; i++) {
+            Thread thread = new Thread(task);
+            thread.start();
+        }
+    }
+
+    public void addListener(TaskObserver o) {
 
     }
 
