@@ -11,12 +11,12 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner; // Java 1.5 equivalent of cs1.Keyboard
 
-public class GuessClient
+public class tasksWthreads
 {
    public static final String HOST_NAME = "localhost";
    public static final int HOST_PORT = 7777; // host port number
 
-   public GuessClient()
+   public tasksWthreads()
    {
    }
    
@@ -62,7 +62,7 @@ public class GuessClient
    }
    
    public static void main(String[] args)
-   {  GuessClient client = new GuessClient();
+   {  tasksWthreads client = new tasksWthreads();
       client.startClient();
    }
 }
