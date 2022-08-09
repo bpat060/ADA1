@@ -37,8 +37,4 @@ public class Task<E, F> implements Runnable {
 
     }
 
-    public interface TaskObserver<E, F> {
-
-    }
-
 }
