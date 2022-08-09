@@ -1,4 +1,4 @@
-package examples;
+package A1;
 
 /**
    A class that represents a server in a number guessing game where
