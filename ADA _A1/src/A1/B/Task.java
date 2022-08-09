@@ -36,5 +36,4 @@ public class Task<E, F> implements Runnable {
     protected void notifyAll(F progress) {
 
     }
-
 }
