@@ -11,12 +11,12 @@ package A1;
 public class Task implements Runnable
 {
    private int x;
-   private int getId;
+   private volatile int UniqueIdentifier;
    
    public Task()
    {   
        x = 0;
-       int id = getId; 
+       int id = UniqueIdentifier; 
    }
    
    // repeatedly increment the value of x 
@@ -27,7 +27,6 @@ public class Task implements Runnable
       int loopIterations = (x + 1) * 10;
       for (int i = 0; i < loopIterations; i++)
       {  
-          x++; 
           x++; 
       }
       System.out.println("Thread " + Thread.currentThread()
@@ -40,7 +39,7 @@ public class Task implements Runnable
       
       for (int i = 0; i < 10; i++){
           Thread thread = new Thread(task);
-        thread.start();
+          thread.start();
         //System.out.println("The final value of x is " + task.x);
       }
       
