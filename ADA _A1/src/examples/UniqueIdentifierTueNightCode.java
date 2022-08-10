@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package A1;
-
-import A1.B.*;
+package examples;
 
 /**
  *
  * @author Owner
  */
-public class UniqueIdentifier {
+public class UniqueIdentifierTueNightCode {
 
     static int id;
     static Task task;
 
-    public UniqueIdentifier(Task task) {
+    public UniqueIdentifierTueNightCode(Task task) {
 
         this.id = id;
         this.task = task;
