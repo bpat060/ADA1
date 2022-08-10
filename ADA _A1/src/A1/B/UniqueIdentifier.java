@@ -11,6 +11,7 @@ package A1.B;
  */
 public class UniqueIdentifier {
 
+    //singletons pattern counter
     static int id;
     static Task task;
 

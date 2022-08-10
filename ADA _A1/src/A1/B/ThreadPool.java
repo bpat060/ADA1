@@ -5,6 +5,9 @@
  */
 package A1.B;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Owner
@@ -12,12 +15,13 @@ package A1.B;
 public class ThreadPool {
 
     Task E;
+    List<Task> pool = new ArrayList<Task>();
     int initialSize;
 
     public ThreadPool(int initialSize) {
         this.initialSize = initialSize;
         this.E = E;
-
+        this.pool = pool;
     }
 
     public int getSize() {
