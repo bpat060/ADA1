@@ -9,6 +9,8 @@ package A1.B;
  *
  * @author Owner
  */
-public interface TaskObserver<E, F> {
+public interface TaskObserver<F> {
+
+    public void process(F param);
 
 }
