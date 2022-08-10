@@ -6,17 +6,9 @@ package A1;
 
 /**
  *
- * @author Sheet
+ * @author 
  */
 
-/**
- * A class that represents a server in a number guessing game where GuessClient
- * objects connect to this GuessServer and try to guess a random integer value
- * between min (incl) and max (excl) The game initiates with a response from the
- * server and ends when the server responds with "Correct guess!"
- *
- * @author Andrew Ensor
- */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;

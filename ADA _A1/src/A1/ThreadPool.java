@@ -1,9 +1,6 @@
 package A1;
 
-/**
-   A class that represents a client in a number guessing game
-   @see GuessServer.java
-*/
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
