@@ -15,12 +15,18 @@ import java.util.List;
 public abstract class ThreadPool implements Runnable {
 
     Runnable runnable;
-    List<Runnable> pool = new ArrayList<Runnable>();
     int initialSize;
+    ArrayList<Runnable> pool = new ArrayList<Runnable>(initialSize);
+    int newSize;
 
     public ThreadPool(int initialSize) {
         this.initialSize = initialSize;
-        this.runnable = runnable;
+        this.runnable = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Executing: " + Thread.currentThread().getName());
+            }
+        };
         this.pool = pool;
     }
 
@@ -29,7 +35,12 @@ public abstract class ThreadPool implements Runnable {
     }
 
     public int getAvailable() { // get available threads?
-        //Thread.currentThread().isAlive();
+
+        for (int i = 0; i < pool.size(); i++) {
+            //Thread.currentThread().isAlive();
+            //get thread id and return num?
+
+        }
         int num;
         if (perform(runnable) == true) {
             num = 1;
@@ -40,8 +51,7 @@ public abstract class ThreadPool implements Runnable {
     }
 
     public void resize(int newSize) {
-        //if pool reaches max num threads
-        //make pool list longer by a resonable amount for new size
+        pool.ensureCapacity(newSize);
     }
 
     public void destroyPool() {
@@ -62,13 +72,10 @@ public abstract class ThreadPool implements Runnable {
         Runnable instance = new Runnable() {
             @Override
             public void run() {
-                System.out.println("From run() method: " + Thread.currentThread().getName());
-
+                System.out.println("Executing: " + Thread.currentThread().getName());
             }
-
         };
-
-        System.out.println("Create a new instance of the thread object.");
+        System.out.println("Creating a new instance of the thread object.");
 
         Thread test1 = new Thread(instance);
         System.out.println("Executing the thread!");
