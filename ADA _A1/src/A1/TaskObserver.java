@@ -10,8 +10,10 @@ package A1;
  *
  * @author Owner
  */
-public interface TaskObserver<F> {
-
-    public void process(F param);
-
+public interface TaskObserver{
+   
+    public void addListener(TaskObserver o);
+    public void removeListener(TaskObserver o);
+    public void notifyAll(TaskObserver o);
+    
 }

@@ -5,74 +5,67 @@
  */
 package A1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Owner
- * @param <Input>
- * @param <Output>
+ * @param <E>
+ * @param <F>
+ * 
  */
-public abstract class Task<Input, Output> implements Runnable {
 
-    int id = 0;
-    Input input;
-    Output output;
+public abstract class Task<E, F> implements Runnable {
+    
+    E input;
+    F output;
+    int id;
     private boolean chopstick; // access to chopstick is synchronized
-    Task task = new Task(input) {};
+    private List<Task> TaskObserver = new ArrayList<>();
+    
+    //Task task = new Task(input) {};
 
-    public Task(Input input) {
+    public Task(E input, F output) {
         this.input = input;
-        chopstick = true;
+        this.output = output;
+        //chopstick = true;
+    }
+    
+    public E getE() {
+        return this.input;
+    }
+    
+    public F getF() {
+        return this.output;
     }
 
-    public int getID(Input input) { //need to change return to int
-        id++;
+    public int getID(int id) { //need to change return to int
+        //id++;
         return id;
     }
     
-    public void run() {
-        
-      acquireLock();
-      releaseLock();
-    
-    }
-    
-    public synchronized void acquireLock() {
-        while (!chopstick) // wait for the lock available notification
-        {
-            try {
-                wait();
-            } catch (InterruptedException e) {  // ignore
-            }
-        }
-        chopstick = false; // lock is now unavailable for other threads
-
-        System.out.println("Thread " + Thread.currentThread()
-                + " started with x = " + input);
-
-        int loopIterations = 10;
-
-        for (int i = 0; i < loopIterations; i++) {
-            input++;
-        }
-
-        System.out.println("Thread " + Thread.currentThread()
-                + " finishing with x = " + input);
-    }
-
-    public synchronized void releaseLock() {
-        chopstick = true; // lock is now available for other threads
-        notifyAll(); // notify one waiting thread
-    }
-
     public void addListener(TaskObserver o) {
-
+        TaskObserver.add(o);
     }
 
     public void removeListener(TaskObserver o) {
-
+        
+        TaskObserver.remove(o);
     }
 
-    protected void notifyAll(Output output) {
-
+    protected void notifyAll(F output) {
+        
+        for(TaskObserver o: TaskObserver) {
+            o.update(m);
+        }
+        
     }
+    
+    @Override
+    public void run() {
+      //acquireLock();
+      //releaseLock();
+    }
+    
 }

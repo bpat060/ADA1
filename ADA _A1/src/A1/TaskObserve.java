@@ -4,11 +4,10 @@
  */
 package A1;
 
-
-public class TaskImpl<E, F> extends Task<E, F> {
-
-    public TaskImpl(E param) {
-        super(param);
-    }
+/**
+ *
+ * @author Sheet
+ */
+public class TaskObserve {
     
 }
