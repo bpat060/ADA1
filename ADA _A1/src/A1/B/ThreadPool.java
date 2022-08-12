@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Owner
  */
-public abstract class ThreadPool implements Runnable {
+public class ThreadPool implements Runnable {
 
     Runnable runnable;
     int initialSize;
@@ -61,6 +61,11 @@ public abstract class ThreadPool implements Runnable {
     public boolean perform(Runnable task) {
 
         return false;
+    }
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public static void main(String[] args) {
