@@ -21,43 +21,46 @@ public abstract class Task<E, F> implements Runnable {
     E input;
     F output;
     int id;
-    private boolean chopstick; // access to chopstick is synchronized
-    private List<Task> TaskObserver = new ArrayList<>();
+    //private boolean chopstick; // access to chopstick is synchronized
+    private final List<Task> TaskObserver = new ArrayList<>();
     
     //Task task = new Task(input) {};
 
     public Task(E input, F output) {
+        
         this.input = input;
         this.output = output;
         //chopstick = true;
     }
     
     public E getE() {
+        
         return this.input;
     }
     
     public F getF() {
+        
         return this.output;
     }
 
     public int getID(int id) { //need to change return to int
-        //id++;
+        id++;
         return id;
     }
     
     public void addListener(TaskObserver o) {
-        TaskObserver.add(o);
+        TaskObserver.add((Task) o);
     }
 
     public void removeListener(TaskObserver o) {
         
-        TaskObserver.remove(o);
+        TaskObserver.remove((Task) o);
     }
 
     protected void notifyAll(F output) {
         
-        for(TaskObserver o: TaskObserver) {
-            o.update(m);
+       for(Task o: TaskObserver) {
+           // o.add(id);
         }
         
     }
