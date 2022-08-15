@@ -34,24 +34,27 @@ public class ThreadPool implements Runnable {
         return pool.size(); //dunno if get size is relative to initial size++?
     }
 
-    public int getAvailable() { // get available threads?
-
+    public int getAvailable() { // get available threads.
+        int count = 0;
         for (int i = 0; i < pool.size(); i++) {
-            //Thread.currentThread().isAlive();
-            //get thread id and return num?
-
+            if (Thread.currentThread().isAlive()) {
+                count++;
+            }
         }
-        int num;
-        if (perform(runnable) == true) {
-            num = 1;
-        } else {
-            num = 0;
-        }
-        return num;
+        return count;
     }
 
     public void resize(int newSize) {
-        pool.ensureCapacity(newSize);
+        if (getAvailable() < (pool.size() / 3)) {
+            pool.ensureCapacity(pool.size() * 2);
+            //doubles pool threads
+        } else if (getAvailable() > ((pool.size() / 3) * 2)) {
+            pool.ensureCapacity(pool.size() / 2);
+            //halves pool threads
+        } else {
+            pool.ensureCapacity(newSize);
+            //custom size
+        }
     }
 
     public void destroyPool() {
@@ -59,7 +62,7 @@ public class ThreadPool implements Runnable {
     }
 
     public boolean perform(Runnable task) {
-
+        //not sure how this is working with other functions?
         return false;
     }
 
