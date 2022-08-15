@@ -5,12 +5,17 @@
  */
 package A1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
  * @author Owner
  */
 public interface TaskObserver{
+    
+    public List<Task> TaskObserver = new ArrayList<>();
    
     public void addListener(TaskObserver o);
     public void removeListener(TaskObserver o);

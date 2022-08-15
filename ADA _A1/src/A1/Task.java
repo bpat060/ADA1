@@ -7,6 +7,7 @@ package A1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -18,6 +19,7 @@ import java.util.List;
 
 public abstract class Task<E, F> implements Runnable {
     
+    private Task<E, F> Task;
     E input;
     F output;
     int id;
@@ -43,8 +45,8 @@ public abstract class Task<E, F> implements Runnable {
         return this.output;
     }
 
-    public int getID(int id) { //need to change return to int
-        id++;
+    public int getID(int id, Object task) { //need to change return to int
+        id = System.identityHashCode(task);
         return id;
     }
     
@@ -67,8 +69,7 @@ public abstract class Task<E, F> implements Runnable {
     
     @Override
     public void run() {
-      //acquireLock();
-      //releaseLock();
+        
     }
     
 }
